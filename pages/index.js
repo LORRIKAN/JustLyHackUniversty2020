@@ -16,7 +16,7 @@ function Home(){
 
 export default function Index(){
     return(
-      <div style={{'background-image':'url(https://sun9-12.userapi.com/VjptDjuK4wfiu0h9w-D76kG95KUYVfNUHrSzZA/hsl-nw7Ziew.jpg)'}}>
+      <div style={{'background-image':'url(https://sun9-12.userapi.com/VjptDjuK4wfiu0h9w-D76kG95KUYVfNUHrSzZA/hsl-nw7Ziew.jpg)', 'min-height':'100vh'}} >
         <Home/>
         <HeaderUnlogged/>
         <IndexBody logged="false"/>

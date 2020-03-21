@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 
 export default function SiteFooter(props){
     return(
-        <div>
+        <div className="fixed-bottom">
                 <Container className = {"pt-2 pb-2 bg-light " + props.sticktion}>
                     <Row>
                        <Col md={4}><h5>© Команда "JustLy"</h5></Col>

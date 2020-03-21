@@ -9,10 +9,39 @@ export default class  BrowseBody extends React.Component{
   constructor(props){
     super(props);
     this.props = props;
+    this.state = {block:<div></div>}
   }
 
 
   render(){
+
+    const handler = (e) => {
+      let pF = document.getElementById('pFrom').value;
+      let pT = document.getElementById('pTo').value;
+      let nR = document.getElementById('nRooms').value;
+      let aRH = document.getElementById('apsRoomHouse').value;
+      let url = '192.168.0.5';
+      fetch('http://'+ url +':8080/api/v1/users/search/',
+          {headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          method: "POST",
+          body: JSON.stringify({priceFrom: pF, priceTo: pT, numberRooms: nR, apsType:aRH})
+        }).then(res => res.json()).then((result) =>{
+        if(result.code == 200){
+          alert("SRABOTALO");
+        }else{
+          this.setState({block:<div>
+            <Row className="tect-center ml-2 h-100" style={{'background-color':'rgba(255, 255, 255, .75)'}}>
+              <h2 className="m-auto">По вашему запросу ничего не найдено :(</h2>
+            </Row>
+          </div>});
+        }
+      },(error)=>{
+      });
+    }
+
     return(
       <div className="m-2">
         <Container>
@@ -24,17 +53,17 @@ export default class  BrowseBody extends React.Component{
                    <Form.Label>Цена</Form.Label>
                    <Row>
                     <Col lg={6}>
-                      <Form.Control type="number" placeholder="От" />
+                      <Form.Control id = "pFrom" type="number" placeholder="От" />
                     </Col>
                     <Col lg={6}>
-                      <Form.Control type="number" placeholder="До" />
+                      <Form.Control id = "pTo" type="number" placeholder="До" />
                     </Col>
                    </Row>
                  </Form.Group>
 
                  <Form.Group controlId="apsRooms">
                    <Form.Label>Число комнат</Form.Label>
-                   <Form.Control as="select" placeholder="Выберите">
+                   <Form.Control id="nRooms" as="select" placeholder="Выберите">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -45,17 +74,20 @@ export default class  BrowseBody extends React.Component{
                    </Form.Control>
                  </Form.Group>
 
-                 <Form.Group controlId="formBasicCheckbox">
-                   <Form.Check type="checkbox" label="Ищу комнату" />
+                 <Form.Group controlId="apsRoomsHouseChoose">
+                  <Form.Label>Тип помещения</Form.Label>
+                   <Form.Control id="apsRoomHouse" as="select" placeholder="Выберите">
+                     <option>Квартира</option>
+                     <option>Комната</option>
+                     <option>Дом</option>
+                   </Form.Control>
                  </Form.Group>
-                 <Button variant="success" type="submit">
-                   Поиск
-                 </Button>
+                 <a pF="#pFrom" pT="#pTo" nR="nRooms" aRH="apsRoomHouse" onClick={(e) => handler(e)} style={{'color':'white'}} class="btn btn-lg btn-success btn-block" type="submit">Поиск</a>
                 </Form>
               </Row>
             </Col>
             <Col lg={9}>
-              
+              {this.state.block}
             </Col>
           </Row>
         </Container>
