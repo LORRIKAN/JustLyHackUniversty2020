@@ -21,7 +21,7 @@ const HeaderLogged = () =>{
                   </Link>
                 </Navbar.Brand>
                 <Link href="/profile">
-                  <a><h3 className = 'text-light'>Личный кабинет</h3></a>
+                  <a style={{width:'30vh'}} class="btn btn-lg btn-light btn-block">Личный кабинет</a>
                 </Link>
             </Container>
         </Navbar>

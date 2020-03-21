@@ -8,6 +8,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Accordion from 'react-bootstrap/Accordion';
 import ProfileInner from './ProfileInner';
 import PersanalData from './PersanalData';
+import AddApartament from './AddApartament';
 
 export default class ProfileBody extends React.Component{
   constructor(props){
@@ -41,6 +42,13 @@ export default class ProfileBody extends React.Component{
 
     const ShowAparts = () =>{
       this.setState({block: <ProfileInner/>});
+      return(
+        <div></div>
+      );
+    }
+
+    const handlerAddAps = () =>{
+      this.setState({block: <AddApartament/>});
       return(
         <div></div>
       );
@@ -88,7 +96,7 @@ export default class ProfileBody extends React.Component{
                       <ListGroup.Item style={{'background-color':'#f2f2f2'}} className="mx-1">
                         Мои квартиры
                       </ListGroup.Item>
-                      <ListGroup.Item style={{'background-color':'#f2f2f2'}} className="mx-1">
+                      <ListGroup.Item style={{'background-color':'#f2f2f2'}} action onClick={(e) => handlerAddAps(e)} className="mx-1">
                         Добавить квартиру
                       </ListGroup.Item>
                     </div>
