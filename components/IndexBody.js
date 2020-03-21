@@ -12,7 +12,7 @@ function MainCard(props){
   let blockGet, blockGive;
   if(props.logged == "true"){
     blockGet = <Link href="/browseAparts"><Button className='btn-success' size="lg" >Снять!</Button></Link>
-    blockGive = <Link href="/indexLogged"><Button className='btn-success' size="lg" >Сдать!</Button></Link>
+    blockGive = <Link href="/profile"><Button className='btn-success' size="lg" >Сдать!</Button></Link>
   }else{
     blockGet = <Link href="/browseAparts"><Button className='btn-success' size="lg" >Снять!</Button></Link>
     blockGive = <Link href="/signIn"><Button className='btn-success' size="lg" >Сдать!</Button></Link>
