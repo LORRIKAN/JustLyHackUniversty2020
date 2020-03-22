@@ -1,10 +1,19 @@
-import Component from 'react';
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
+function Home() {
+    return <div>
+        <Head>
+            <title>Добавление квартиры</title>
+            <script type="text/javascript" src="//vk.com/js/api/openapi.js?122"></script>
+            <link rel="shortcut icon" href="https://sun9-28.userapi.com/N_0nedgWtI-4iqd51k7hkB9Ei-gR_yXzolLn_g/o2lxrwNNQ3Y.jpg" type="image/x-icon" />
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+        </Head>
+    </div>
+}
 
 export default class AddApartament extends React.Component{
   constructor(props){
@@ -13,12 +22,12 @@ export default class AddApartament extends React.Component{
   }
 
   render(){
-    return(
+      return (
+        <Home/>
       <div style={{'background-color':'rgba(255, 255, 255, .75)', height:'83vh'}} className="overflow-auto pb-10 scrollbar scrollbar-success">
         <Container >
           <Row>
             <Col lg={12}>
-              <Row>
                 <h3 className="p-2">Заполните информацию о квартире:</h3>
               </Row>
               <Row>
@@ -193,8 +202,6 @@ export default class AddApartament extends React.Component{
                   </Col>
                   <Col lg={4}></Col>
                 </Row>
-              </Col>
-          </Row>
         </Container>
       </div>
     );

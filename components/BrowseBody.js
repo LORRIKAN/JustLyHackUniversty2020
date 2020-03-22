@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
+import Router from "next/router";
 
 export default class  BrowseBody extends React.Component{
   constructor(props){
@@ -15,6 +16,13 @@ export default class  BrowseBody extends React.Component{
 
   render(){
 
+  const GoFlatView = (e) =>{
+    Router.push({
+      pathname: '/flatView',
+      search: '?query='+e,
+      state: { userLogin: e }})
+  }
+  
     const handler = (e) => {
       let pF = document.getElementById('pFrom').value;
       let pT = document.getElementById('pTo').value;
@@ -30,10 +38,11 @@ export default class  BrowseBody extends React.Component{
           body: JSON.stringify({priceFrom: pF, priceTo: pT, numberRooms: nR, apsType:aRH})
         }).then(res => res.json()).then((result) =>{
         if(result.code == 200){
+		  <GoFlatView e={props.login}/>
           alert("SRABOTALO");
         }else{
           this.setState({block:<div>
-            <Row className="tect-center ml-2 h-100" style={{'background-color':'rgba(255, 255, 255, .75)'}}>
+            <Row className="text-center ml-2 h-100" style={{'background-color':'rgba(255, 255, 255, .75)'}}>
               <h2 className="m-auto">По вашему запросу ничего не найдено :(</h2>
             </Row>
           </div>});

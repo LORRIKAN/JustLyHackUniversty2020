@@ -6,6 +6,7 @@ import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Accordion from 'react-bootstrap/Accordion';
+import Router from "next/router";
 import ProfileInner from './ProfileInner';
 import PersanalData from './PersanalData';
 import AddApartament from './AddApartament';
@@ -60,6 +61,13 @@ export default class ProfileBody extends React.Component{
         <div></div>
       );
     }
+	
+	  const GoMakeOwnerContract = (e) =>{
+	  Router.push({
+      pathname: '/ownerContract',
+      search: '?query='+e,
+      state: { userLogin: e }})
+  }
 
     return(
       <div className="my-2">
@@ -111,7 +119,7 @@ export default class ProfileBody extends React.Component{
                       <ListGroup.Item style={{'background-color':'#f2f2f2'}} className="mx-1">
                         Мои договоры
                       </ListGroup.Item>
-                      <ListGroup.Item style={{'background-color':'#f2f2f2'}} className="mx-1">
+                      <ListGroup.Item style={{'background-color':'#f2f2f2'}} action onClick={(e) => GoMakeOwnerContract(e)} className="mx-1">
                         Добавить договор
                       </ListGroup.Item>
                     </div>
