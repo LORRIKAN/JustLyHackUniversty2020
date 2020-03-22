@@ -17,11 +17,15 @@ function Home(){
 }
 
 export default function Profile(){
+  let login;
+  if(process.browser){
+    login = new URLSearchParams(window.location.search).get('query');
+  }
     return(
       <div style={{'background-image':'url(https://sun9-12.userapi.com/VjptDjuK4wfiu0h9w-D76kG95KUYVfNUHrSzZA/hsl-nw7Ziew.jpg)', 'min-height':'100vh'}}>
         <Home/>
         <HeaderLogged/>
-        <ProfileBody/>
+        <ProfileBody login={login}/>
         <Footer/>
       </div>
     );

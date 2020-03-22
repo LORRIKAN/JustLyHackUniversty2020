@@ -4,15 +4,30 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image'
+import Image from 'react-bootstrap/Image';
+import Router from "next/router";
 
 import Link from 'next/link';
 
 function MainCard(props){
+  const GoBrowse = (e) =>{
+    Router.push({
+      pathname: '/browseAparts',
+      search: '?query='+e,
+      state: { userLogin: e }})
+  }
+
+  const GoProfile = (e) =>{
+    Router.push({
+      pathname: '/profile',
+      search: '?query='+e,
+      state: { userLogin: e }})
+  }
+
   let blockGet, blockGive;
   if(props.logged == "true"){
-    blockGet = <Link href="/browseAparts"><Button className='btn-success' size="lg" >Снять!</Button></Link>
-    blockGive = <Link href="/profile"><Button className='btn-success' size="lg" >Сдать!</Button></Link>
+    blockGet = <Button onClick={(e) => GoBrowse(props.login)} className='btn-success' size="lg" >Снять!</Button>
+    blockGive = <Button onClick={(e) => GoProfile(props.login)} className='btn-success' size="lg" >Сдать!</Button>
   }else{
     blockGet = <Link href="/browseAparts"><Button className='btn-success' size="lg" >Снять!</Button></Link>
     blockGive = <Link href="/signIn"><Button className='btn-success' size="lg" >Сдать!</Button></Link>
@@ -86,7 +101,7 @@ export default class  IndexBody extends React.Component{
     return(
       <div>
         <Container fluid='true'>
-          <MainCard logged={this.props.logged}/>
+          <MainCard logged={this.props.logged} login={this.props.login}/>
           <LeftSidePic url='https://sun9-22.userapi.com/slcKjeq7xhgWIJLYPuG2Sksnvnq0KJ9aoQbB1Q/S161sUg4PEY.jpg' hText='простой способ быстро найти и снять квартиру!'/>
           <RighSidePic url='https://sun9-42.userapi.com/c5QiacMFqNxf7cAVbiHBNFRpHgysngaUcPPZAg/SXrIyPLsTOQ.jpg' hText='простой способ быстро сдать квартиру!'/>
           <LeftSidePic url='https://sun9-52.userapi.com/46U0a0sZBLjDV7CfgIp-8ZbiZcn7gel5axuDUw/gSfe9kl69rE.jpg' hText='надежность!'/>

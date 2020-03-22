@@ -12,7 +12,33 @@ export default class PersanalData extends React.Component{
   }
 
   render(){
-
+    const handler = (e) => {
+      let name = document.getElementById('name').value;
+      let ndname = document.getElementById('ndname').value;
+      let sex = document.getElementById('sex').value;
+      let day = document.getElementById('day').value;
+      let month = document.getElementById('month').value;
+      let year = document.getElementById('year').value;
+      let phone = document.getElementById('phone').value;
+      let email = document.getElementById('email').value;
+      let date = day+'.'+month+'.'+year;
+      let url = '192.168.0.5';
+      fetch('http://'+ url +':8080/api/v1/users/saveuserinfo/',
+          {headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          method: "POST",
+          body: JSON.stringify({name: name, ndname: ndname, date: date, phone: phone, email: email, login: this.props.login})
+        }).then(res => res.json()).then((result) =>{
+        if(result.code == 200){
+          alert("Данные обновлены!");
+        }else{
+          alert("Ошибка!");
+        }
+      },(error)=>{
+      });
+    }
 
     return(
       <div style={{'background-color':'rgba(255, 255, 255, .75)'}}>
@@ -29,7 +55,7 @@ export default class PersanalData extends React.Component{
                 <Col lg={9}>
                   <Form>
                     <Form.Group>
-                      <Form.Control id="name" as="input" placeholder="Введите имя">
+                      <Form.Control id="name" type="text" as="input" placeholder="Введите имя">
                       </Form.Control>
                     </Form.Group>
                   </Form>
@@ -42,7 +68,7 @@ export default class PersanalData extends React.Component{
                 <Col lg={9}>
                   <Form>
                     <Form.Group>
-                      <Form.Control id="2ndname" as="input" placeholder="Введите фамилию">
+                      <Form.Control id="ndname" as="input" placeholder="Введите фамилию">
                       </Form.Control>
                     </Form.Group>
                   </Form>
@@ -114,7 +140,7 @@ export default class PersanalData extends React.Component{
                 <Row>
                   <Col lg={4}></Col>
                   <Col lg={4} className="text-center">
-                    <Button type="submit" className="btn-success w-100 my-2" action>Сохранить</Button>
+                    <Button name="#name" ndname="#ndname" sex="#sex" day="#day" month="#month" year="#year" phone="#phone" email="#email" onClick={(e) => handler(e)} type="submit" className="btn-success w-100 my-2" action>Сохранить</Button>
                   </Col>
                   <Col lg={4}></Col>
                 </Row>
