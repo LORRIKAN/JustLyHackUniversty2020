@@ -425,6 +425,8 @@ export default class rentingContract extends React.Component{
 					  </Col>
 					  <Col lg={4}></Col>
 					</Row>
+					<Row style={{width:100, height:100}}>
+					</Row>
         </Container>
 		<Footer/>
       </div>
