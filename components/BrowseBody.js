@@ -38,7 +38,7 @@ export default class  BrowseBody extends React.Component{
           body: JSON.stringify({priceFrom: pF, priceTo: pT, numberRooms: nR, apsType:aRH})
         }).then(res => res.json()).then((result) =>{
         if(result.code == 200){
-		  <GoFlatView e={props.login}/>
+		  Router.push({pathname: '/flatView', search: '?query='+props.login,state: { userLogin: props.login }});
           alert("SRABOTALO");
         }else{
           this.setState({block:<div>

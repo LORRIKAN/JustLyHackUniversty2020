@@ -42,18 +42,18 @@ export default function flatView(props){
 			flatShort='Аренда 1-комнатной квартиры' 
 			flatAdress='Санкт-Петербург, Московский проспект, 25к1'
 			metro='Технологический институт'
-			imageArray='https://sun9-22.userapi.com/slcKjeq7xhgWIJLYPuG2Sksnvnq0KJ9aoQbB1Q/S161sUg4PEY.jpg'
+			imageArray='https://sun9-52.userapi.com/46U0a0sZBLjDV7CfgIp-8ZbiZcn7gel5axuDUw/gSfe9kl69rE.jpg'
 			flatCost='29 000 ₽ / мес.'
 			sellerPic='https://sun9-24.userapi.com/c855120/v855120424/20c2e3/g3ctW4HYepA.jpg'
-			sellerName='Иванов Иван'
+			sellerName='Виктор Петров'
 			space='52,3'
 			roomsNum='3'
 			rentType='Посуточная'
 			floorNum='4'
 			floorsCount='5'
 			description='Лучшая квартира в районе, рядом с метро'
-			sellerPhone='+72281488228'
-			sellerMail='ivanov.sobaka@sobaka.sru'
+			sellerPhone='+79553756456'
+			sellerMail='viktor.petrov@gmail.com'
 			login={props.login}/>
 		</Container>
 	</div>
@@ -61,10 +61,14 @@ export default function flatView(props){
 }
 
 function Func(props){
+	let login;
+    if(process.browser){
+      login = new URLSearchParams(window.location.search).get('query');
+    }
 	return(
 		<div>
 			<Home flatShort={props.flatShort} />
-			<HeaderLogged/>
+			<HeaderLogged login={login}/>
 				<Container className='my-2'>
 					<Row>
 						<Col lg={8} className='p-2'>
@@ -77,14 +81,20 @@ function Func(props){
 						</Col>
 					</Row>
 					<Row>
-						<Col lg={8} >
-							<Carousel>
-							  <Carousel.Item style={{width:1000, height:350}}>
-								<Image src={props.imageArray} fluid/>
+						<Col lg={8} className="px-3 p-2">
+							<Carousel style={{width:720, height:350}}>
+							  <Carousel.Item>
+								<Image src='https://sun9-30.userapi.com/c206524/v206524425/b623c/56c1FE4AY9E.jpg' thumbnail/>
+							  </Carousel.Item>
+							  <Carousel.Item>
+								<Image src='https://sun9-29.userapi.com/c206524/v206524425/b6244/quCpgi-5hZc.jpg' thumbnail/>
+							  </Carousel.Item>
+							  <Carousel.Item>
+								<Image src='https://sun9-2.userapi.com/c206524/v206524425/b624c/MEDh3IJ5qtY.jpg' thumbnail/>
 							  </Carousel.Item>
 							</Carousel>
 						</Col>
-						<Col lg={4} style={{'background-color': '#fff'}}>
+						<Col lg={4} style={{'background-color':'rgba(255, 255, 255, .75)'}}>
 							<h2 className='my-5 mx-2'>{props.flatCost}</h2>
 							<h4>
 							<Image src={props.sellerPic} roundedCircle/>
@@ -98,7 +108,7 @@ function Func(props){
 					</Row>
 					<Row>
 						<Col lg={8} className='p-2 mx-2'>
-							<Card>
+							<Card style={{'background-color':'rgba(255, 255, 255, .95)'}}>
 								<Card.Header as='h4'>Описание</Card.Header>
 								<Card.Body>
 									<Card.Text>
@@ -114,7 +124,7 @@ function Func(props){
 					</Row>
 					<Row>
 						<Col lg={8} className='p-2 mx-2'>
-						<Card>
+						<Card style={{'background-color':'rgba(255, 255, 255, .95)'}}>
 							<Card.Header as='h4'>Контакты</Card.Header>
 							<Card.Body>
 								<Card.Text>

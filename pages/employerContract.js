@@ -6,6 +6,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Head from "next/head";
 import Card from "react-bootstrap/Card";
+import HeaderLogged from '../components/HeaderLogged';
+import Footer from '../components/Footer';
 
 function Home(){
   return <div>
@@ -28,6 +30,7 @@ export default class employerContract extends React.Component{
     return(
       <div style={ {'background-image':'url(https://sun9-12.userapi.com/VjptDjuK4wfiu0h9w-D76kG95KUYVfNUHrSzZA/hsl-nw7Ziew.jpg)', 'min-height':'100vh'}}>
 	  	<Home/>
+		<HeaderLogged/>
         <Container>
 		<Row>
 		<Col lg={12}>
@@ -245,6 +248,7 @@ export default class employerContract extends React.Component{
 					  <Col lg={4}></Col>
 					</Row>
         </Container>
+		<Footer/>
       </div>
     );
   }
